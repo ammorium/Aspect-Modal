@@ -1,4 +1,4 @@
-jQuery(function ($) {
+(function ($) {
     $.aspectModal = function (message, setting) {
         var defaultSetting = {
             autoHide: {
@@ -37,4 +37,4 @@ jQuery(function ($) {
         });
         return modal;
     };
-});
+}(jQuery));
