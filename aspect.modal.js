@@ -6,7 +6,8 @@
                 time: 6000
             },
             addClose: true,
-            overlay: true
+            overlay: true,
+            classes: []
         };
         setting = $.extend(true, defaultSetting, setting);
 
@@ -19,7 +20,7 @@
                 overlay.fadeIn(function () {
                     overlay.remove();
                     $('body').css({
-                        'overflow':'auto'
+                        'overflow': 'auto'
                     });
                 });
             }
@@ -42,19 +43,21 @@
         modal.append(message);
         if (setting.overlay) {
             var overlay = $('.aspect-modal-overlay');
-            if(overlay.length < 1) {
+            if (overlay.length < 1) {
                 overlay = $('<div>').addClass('aspect-modal-overlay');
                 $('body').append(overlay).css({
-                    'overflow':'hidden'
+                    'overflow': 'hidden'
                 });
             }
             overlay.append(modal);
         } else {
             $('body').append(modal);
         }
+        $(setting.classes).each(function (classID, className) {
+            modal.addClass(className);
+        });
         modal.css({
-            'margin-left': ($(window).width() - modal.outerWidth()) / 2,
-            'margin-top': ($(window).height() - modal.outerHeight()) / 2
+            'margin-left': ($(window).width() - modal.outerWidth()) / 2
         });
         return modal;
     };
